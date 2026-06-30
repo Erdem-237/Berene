@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berenim ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff5fa2,#ff9ecf,#ffd6e7);
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+.kutu{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+input{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    width:220px;
+    font-size:16px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
+    background:#ff2d75;
+    color:white;
+    font-size:16px;
+}
+
+#sonuc{
+    margin-top:20px;
+    font-size:28px;
+    color:white;
+    text-shadow:0 0 15px #ff006a;
+}
+
+.cicek{
+    display:none;
+    font-size:120px;
+    margin-top:20px;
+    animation:don 4s linear infinite;
+    filter:drop-shadow(0 0 20px pink);
+}
+
+@keyframes don{
+    from{transform:rotateY(0deg) rotateX(0deg);}
+    to{transform:rotateY(360deg) rotateX(360deg);}
+}
+
+.kalp{
+    position:absolute;
+    color:white;
+    animation:yuksel 8s linear infinite;
+    opacity:.7;
+}
+
+@keyframes yuksel{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="kutu">
+    <h2>🔐 Şifreyi Gir</h2>
+
+    <input type="password" id="sifre" placeholder="Şifre">
+    <br>
+    <button onclick="kontrol()">Kontrol Et</button>
+
+    <div id="sonuc"></div>
+
+    <div class="cicek" id="cicek">🌹</div>
+</div>
+
+<script>
+// BURAYA KENDİ ŞİFRENİ YAZ
+const dogruSifre = "beren";
+
+function kontrol(){
+    const girilen = document.getElementById("sifre").value;
+
+    if(girilen === dogruSifre){
+        document.getElementById("sonuc").innerHTML =
+        "❤️ Seni Seviyorum Berenim ❤️";
+
+        document.getElementById("cicek").style.display = "block";
+    }else{
+        document.getElementById("sonuc").innerHTML =
+        "❌ Yanlış Şifre";
+    }
+}
+
+for(let i=0;i<25;i++){
+    let kalp=document.createElement("div");
+    kalp.className="kalp";
+    kalp.innerHTML="❤️";
+    kalp.style.left=Math.random()*100+"vw";
+    kalp.style.fontSize=(15+Math.random()*30)+"px";
+    kalp.style.animationDuration=(5+Math.random()*8)+"s";
+    document.body.appendChild(kalp);
+}
+</script>
+
+</body>
+</html>
